@@ -2,7 +2,7 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import mount from 'koa-mount'
 import graphqlHTTP from 'koa-graphql'
-// import schema from './schema.js'
+import schema from './schema.js'
 
 const app = new Koa()
 const router = new Router()
@@ -16,15 +16,15 @@ const router = new Router()
 
 // console.log('Koa')
 
-// app.use(
-//   mount(
-//     '/graphql',
-//     graphqlHTTP({
-//       schema: schema,
-//       graphiql: true,
-//     })
-//   )
-// )
+app.use(
+  mount(
+    '/graphql',
+    graphqlHTTP({
+      schema: schema,
+      graphiql: true,
+    })
+  )
+)
 
 router.get('/', async (ctx) => {
   //   return new Promise((resolve, reject) => {
